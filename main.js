@@ -18,7 +18,7 @@ function renderTodoList() {
     const template = todoItems.map((item, index) => (
     `
     <ul>
-    <li class="${item.complete}">
+    <li>
     ${item}
     <button class="complete" data-index="${index}">Complete Todo</button>
     <button class="delete" data-index="${index}">Delete Todo</button>
@@ -32,9 +32,12 @@ renderTodoList()
 todoList.addEventListener('click', function(event) {
     if(event.target.matches('.delete')) {
         const index = event.target.dataset.index;
-        item.splice(index, 1);
+        todoItems.splice(index, 1);
         renderTodoList();
     }
- 
-
+    if (event.target.matches('complete')) {
+        const index = event.target.dataset.index;
+        todoItems.class="complete"(index, 1)
+        renderTodoList()
+    }
 })
